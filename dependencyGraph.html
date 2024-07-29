@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Graph</title>
+    <link rel="stylesheet" href="https://unpkg.com/@fluentui/react@latest/dist/css/fabric.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #diagram {
+            padding: 20px;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: auto;
+        }
+
+        .controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .zoomable {
+            transform-origin: 0 0;
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="diagram">
+        <div id="mermaid-container" class="mermaid zoomable">
+            classDiagram
+class ClinicManagement_Api_csproj {
+  ClinicManagement.Api.csproj
+}
+class ___ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj {
+  ..\ClinicManagement.BlazorShared\ClinicManagement.BlazorShared.csproj
+}
+ClinicManagement_Api_csproj --> ___ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj
+class ___ClinicManagement_Infrastructure_ClinicManagement_Infrastructure_csproj {
+  ..\ClinicManagement.Infrastructure\ClinicManagement.Infrastructure.csproj
+}
+ClinicManagement_Api_csproj --> ___ClinicManagement_Infrastructure_ClinicManagement_Infrastructure_csproj
+class ClinicManagement_Blazor_csproj {
+  ClinicManagement.Blazor.csproj
+}
+class ___ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj {
+  ..\ClinicManagement.BlazorShared\ClinicManagement.BlazorShared.csproj
+}
+ClinicManagement_Blazor_csproj --> ___ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj
+class ClinicManagement_Blazor_Host_csproj {
+  ClinicManagement.Blazor.Host.csproj
+}
+class ___ClinicManagement_Blazor_ClinicManagement_Blazor_csproj {
+  ..\ClinicManagement.Blazor\ClinicManagement.Blazor.csproj
+}
+ClinicManagement_Blazor_Host_csproj --> ___ClinicManagement_Blazor_ClinicManagement_Blazor_csproj
+class ClinicManagement_Core_csproj {
+  ClinicManagement.Core.csproj
+}
+class ___ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj {
+  ..\ClinicManagement.BlazorShared\ClinicManagement.BlazorShared.csproj
+}
+ClinicManagement_Core_csproj --> ___ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj
+class ClinicManagement_Infrastructure_csproj {
+  ClinicManagement.Infrastructure.csproj
+}
+class ___ClinicManagement_Core_ClinicManagement_Core_csproj {
+  ..\ClinicManagement.Core\ClinicManagement.Core.csproj
+}
+ClinicManagement_Infrastructure_csproj --> ___ClinicManagement_Core_ClinicManagement_Core_csproj
+class FunctionalTests_csproj {
+  FunctionalTests.csproj
+}
+class ______src_ClinicManagement_Api_ClinicManagement_Api_csproj {
+  ..\..\src\ClinicManagement.Api\ClinicManagement.Api.csproj
+}
+FunctionalTests_csproj --> ______src_ClinicManagement_Api_ClinicManagement_Api_csproj
+class ______src_ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj {
+  ..\..\src\ClinicManagement.BlazorShared\ClinicManagement.BlazorShared.csproj
+}
+FunctionalTests_csproj --> ______src_ClinicManagement_BlazorShared_ClinicManagement_BlazorShared_csproj
+class ______src_ClinicManagement_Infrastructure_ClinicManagement_Infrastructure_csproj {
+  ..\..\src\ClinicManagement.Infrastructure\ClinicManagement.Infrastructure.csproj
+}
+FunctionalTests_csproj --> ______src_ClinicManagement_Infrastructure_ClinicManagement_Infrastructure_csproj
+class IntegrationTests_csproj {
+  IntegrationTests.csproj
+}
+class ______src_ClinicManagement_Core_ClinicManagement_Core_csproj {
+  ..\..\src\ClinicManagement.Core\ClinicManagement.Core.csproj
+}
+IntegrationTests_csproj --> ______src_ClinicManagement_Core_ClinicManagement_Core_csproj
+class ______src_ClinicManagement_Infrastructure_ClinicManagement_Infrastructure_csproj {
+  ..\..\src\ClinicManagement.Infrastructure\ClinicManagement.Infrastructure.csproj
+}
+IntegrationTests_csproj --> ______src_ClinicManagement_Infrastructure_ClinicManagement_Infrastructure_csproj
+class ___UnitTests_UnitTests_csproj {
+  ..\UnitTests\UnitTests.csproj
+}
+IntegrationTests_csproj --> ___UnitTests_UnitTests_csproj
+class UnitTests_csproj {
+  UnitTests.csproj
+}
+class ______src_ClinicManagement_Core_ClinicManagement_Core_csproj {
+  ..\..\src\ClinicManagement.Core\ClinicManagement.Core.csproj
+}
+UnitTests_csproj --> ______src_ClinicManagement_Core_ClinicManagement_Core_csproj
+class FrontDesk_Api_csproj {
+  FrontDesk.Api.csproj
+}
+class ___BlazorShared_BlazorShared_csproj {
+  ..\BlazorShared\BlazorShared.csproj
+}
+FrontDesk_Api_csproj --> ___BlazorShared_BlazorShared_csproj
+class ___FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj {
+  ..\FrontDesk.Infrastructure\FrontDesk.Infrastructure.csproj
+}
+FrontDesk_Api_csproj --> ___FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj
+class FrontDesk_Blazor_csproj {
+  FrontDesk.Blazor.csproj
+}
+class ___BlazorShared_BlazorShared_csproj {
+  ..\BlazorShared\BlazorShared.csproj
+}
+FrontDesk_Blazor_csproj --> ___BlazorShared_BlazorShared_csproj
+class FrontDesk_Blazor_Host_csproj {
+  FrontDesk.Blazor.Host.csproj
+}
+class ___FrontDesk_Blazor_FrontDesk_Blazor_csproj {
+  ..\FrontDesk.Blazor\FrontDesk.Blazor.csproj
+}
+FrontDesk_Blazor_Host_csproj --> ___FrontDesk_Blazor_FrontDesk_Blazor_csproj
+class FrontDesk_Core_csproj {
+  FrontDesk.Core.csproj
+}
+class ___BlazorShared_BlazorShared_csproj {
+  ..\BlazorShared\BlazorShared.csproj
+}
+FrontDesk_Core_csproj --> ___BlazorShared_BlazorShared_csproj
+class FrontDesk_Infrastructure_csproj {
+  FrontDesk.Infrastructure.csproj
+}
+class ___BlazorShared_BlazorShared_csproj {
+  ..\BlazorShared\BlazorShared.csproj
+}
+FrontDesk_Infrastructure_csproj --> ___BlazorShared_BlazorShared_csproj
+class ___FrontDesk_Core_FrontDesk_Core_csproj {
+  ..\FrontDesk.Core\FrontDesk.Core.csproj
+}
+FrontDesk_Infrastructure_csproj --> ___FrontDesk_Core_FrontDesk_Core_csproj
+class FunctionalTests_csproj {
+  FunctionalTests.csproj
+}
+class ______src_BlazorShared_BlazorShared_csproj {
+  ..\..\src\BlazorShared\BlazorShared.csproj
+}
+FunctionalTests_csproj --> ______src_BlazorShared_BlazorShared_csproj
+class ______src_FrontDesk_Api_FrontDesk_Api_csproj {
+  ..\..\src\FrontDesk.Api\FrontDesk.Api.csproj
+}
+FunctionalTests_csproj --> ______src_FrontDesk_Api_FrontDesk_Api_csproj
+class ______src_FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj {
+  ..\..\src\FrontDesk.Infrastructure\FrontDesk.Infrastructure.csproj
+}
+FunctionalTests_csproj --> ______src_FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj
+class IntegrationTests_csproj {
+  IntegrationTests.csproj
+}
+class ______src_FrontDesk_Api_FrontDesk_Api_csproj {
+  ..\..\src\FrontDesk.Api\FrontDesk.Api.csproj
+}
+IntegrationTests_csproj --> ______src_FrontDesk_Api_FrontDesk_Api_csproj
+class ______src_FrontDesk_Core_FrontDesk_Core_csproj {
+  ..\..\src\FrontDesk.Core\FrontDesk.Core.csproj
+}
+IntegrationTests_csproj --> ______src_FrontDesk_Core_FrontDesk_Core_csproj
+class ______src_FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj {
+  ..\..\src\FrontDesk.Infrastructure\FrontDesk.Infrastructure.csproj
+}
+IntegrationTests_csproj --> ______src_FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj
+class ___UnitTests_UnitTests_csproj {
+  ..\UnitTests\UnitTests.csproj
+}
+IntegrationTests_csproj --> ___UnitTests_UnitTests_csproj
+class UnitTests_csproj {
+  UnitTests.csproj
+}
+class ______src_FrontDesk_Core_FrontDesk_Core_csproj {
+  ..\..\src\FrontDesk.Core\FrontDesk.Core.csproj
+}
+UnitTests_csproj --> ______src_FrontDesk_Core_FrontDesk_Core_csproj
+class ______src_FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj {
+  ..\..\src\FrontDesk.Infrastructure\FrontDesk.Infrastructure.csproj
+}
+UnitTests_csproj --> ______src_FrontDesk_Infrastructure_FrontDesk_Infrastructure_csproj
+class PluralsightDdd_SharedKernel_csproj {
+  PluralsightDdd.SharedKernel.csproj
+}
+class PluralsightDdd_SharedKernel_UnitTests_csproj {
+  PluralsightDdd.SharedKernel.UnitTests.csproj
+}
+class ______src_PluralsightDdd_SharedKernel_PluralsightDdd_SharedKernel_csproj {
+  ..\..\src\PluralsightDdd.SharedKernel\PluralsightDdd.SharedKernel.csproj
+}
+PluralsightDdd_SharedKernel_UnitTests_csproj --> ______src_PluralsightDdd_SharedKernel_PluralsightDdd_SharedKernel_csproj
+class VetClinicPublic_csproj {
+  VetClinicPublic.csproj
+}
+
+        </div>
+    </div>
+    <div class="controls">
+        <button id="zoom-in">Zoom In</button>
+        <button id="zoom-out">Zoom Out</button>
+        <button id="reset">Reset Zoom</button>
+    </div>
+    <script type="module">
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({ startOnLoad: true });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const mermaidContainer = document.getElementById('mermaid-container');
+            let scale = 1;
+
+            document.getElementById('zoom-in').addEventListener('click', () => {
+                scale += 0.1;
+                mermaidContainer.style.transform = `scale(${scale})`;
+            });
+
+            document.getElementById('zoom-out').addEventListener('click', () => {
+                scale = Math.max(0.1, scale - 0.1);
+                mermaidContainer.style.transform = `scale(${scale})`;
+            });
+
+            document.getElementById('reset').addEventListener('click', () => {
+                scale = 1;
+                mermaidContainer.style.transform = `scale(${scale})`;
+            });
+        });
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+            if (message.command === 'updateGraph') {
+                document.getElementById('mermaid-container').innerHTML = message.graph;
+                mermaid.contentLoaded();
+            }
+        });
+    </script>
+</body>
+
+</html>

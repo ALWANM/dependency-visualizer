@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Graph</title>
+    <link rel="stylesheet" href="https://unpkg.com/@fluentui/react@latest/dist/css/fabric.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #diagram {
+            padding: 20px;
+            height: 100%;
+            width: 100%;
+            position: relative;
+            overflow: auto;
+        }
+
+        .controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .zoomable {
+            transform-origin: 0 0;
+            transition: transform 0.2s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="diagram">
+        <div id="mermaid-container" class="mermaid zoomable">
+            {{graphData}}
+        </div>
+    </div>
+    <div class="controls">
+        <button id="zoom-in">Zoom In</button>
+        <button id="zoom-out">Zoom Out</button>
+        <button id="reset">Reset Zoom</button>
+    </div>
+    <script type="module">
+        import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
+
+        mermaid.initialize({ startOnLoad: true });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const mermaidContainer = document.getElementById('mermaid-container');
+            let scale = 1;
+
+            document.getElementById('zoom-in').addEventListener('click', () => {
+                scale += 0.1;
+                mermaidContainer.style.transform = `scale(${scale})`;
+            });
+
+            document.getElementById('zoom-out').addEventListener('click', () => {
+                scale = Math.max(0.1, scale - 0.1);
+                mermaidContainer.style.transform = `scale(${scale})`;
+            });
+
+            document.getElementById('reset').addEventListener('click', () => {
+                scale = 1;
+                mermaidContainer.style.transform = `scale(${scale})`;
+            });
+        });
+
+        window.addEventListener('message', event => {
+            const message = event.data;
+            if (message.command === 'updateGraph') {
+                document.getElementById('mermaid-container').innerHTML = message.graph;
+                mermaid.contentLoaded();
+            }
+        });
+    </script>
+</body>
+
+</html>

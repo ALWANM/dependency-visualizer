@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Graph</title>
+    <link rel="stylesheet" href="https://unpkg.com/@fluentui/react@latest/dist/css/fabric.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #diagram {
+            width: 100%;
+            height: 100%;
+        }
+
+        .node {
+            cursor: move;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="diagram"></div>
+
+    <script src="https://unpkg.com/gojs/release/go.js"></script>
+    <script>
+        function createGraph(graphData) {
+            const $ = go.GraphObject.make;
+
+            const diagram = $(go.Diagram, "diagram", {
+                initialContentAlignment: go.Spot.Center,
+                layout: $(go.TreeLayout, {
+                    angle: 90,  // Layout tree horizontally
+                    arrangement: go.TreeLayout.ArrangementHorizontal,
+                    treeStyle: go.TreeLayout.StyleLastParents,
+                    nodeSpacing: 10,
+                    layerSpacing: 50
+                }),
+                "undoManager.isEnabled": true
+            });
+
+            // Define the Node template
+            diagram.nodeTemplate =
+                $(go.Node, "Auto",
+                    { width: 100, height: 50, locationSpot: go.Spot.Center },
+                    $(go.Shape, "Rectangle",
+                        { strokeWidth: 0, fill: "lightblue" }),
+                    $(go.TextBlock,
+                        { margin: 5 },
+                        new go.Binding("text", "key"))
+                );
+
+            // Define the Link template
+            diagram.linkTemplate =
+                $(go.Link,
+                    { routing: go.Link.Orthogonal, corner: 5 },
+                    $(go.Shape, { strokeWidth: 2 }),
+                    $(go.Shape, { toArrow: "Standard", stroke: null })
+                );
+
+            // Set the diagram's model
+            diagram.model = new go.TreeModel(
+                graphData.nodes.map(node => ({ key: node.id, parent: node.parent })),
+                graphData.links.map(link => ({ from: link.source, to: link.target }))
+            );
+        }
+
+        window.addEventListener('updateGraph', function (event) {
+                const message = event.data;
+                console.log("Received message:", message); // Debugging line
+                if (message.command === 'updateGraph') {
+                    try {
+                        const graphData = JSON.parse(message.graph);
+                        console.log("Parsed graphData:", graphData); // Debugging line
+                        createGraph(graphData);
+                    } catch (error) {
+                        console.error("Error parsing graph data:", error);
+                    }
+                }
+            });
+    </script>
+</body>
+
+</html>

@@ -1,6 +1,6 @@
 {
-  "name": "dependency-visualizer",
-  "displayName": "dependency-visualizer",
+  "name": "dv",
+  "displayName": "dv",
   "description": "it provide visualization of the dependency graph in dotnet project",
   "version": "0.0.1",
   "engines": {
@@ -9,13 +9,43 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onCommand:dv.rd",
+    "onCommand:dv.showGraph"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "dependencyView",
+          "name": "Dependency View"
+        }
+      ]
+    },
     "commands": [
       {
-        "command": "dependency-visualizer.helloWorld",
-        "title": "Hello World"
+        "command": "dv.rd",
+        "title": "Refresh Dependencies tree view made by Marwan"
+      },
+      {
+        "command": "dv.showGraph",
+        "title": "Show Dependencies Graph made by Marwan"
+      },
+      {
+        "command": "dv.saveDependencyGraph",
+        "title": "Save dependencies graph into Html made by Marwan"
+      },
+      {
+        "command": "dv.printDependencyGraph",
+        "title": "Save Dependencies into pdf file made by Marwan"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "dv.rd",
+        "key": "ctrl+shift+1",
+        "mac": "shift+cmd+1"
       }
     ]
   },
@@ -39,6 +69,7 @@
     "@typescript-eslint/parser": "^7.11.0",
     "@vscode/test-cli": "^0.0.9",
     "@vscode/test-electron": "^2.4.0",
+    "copy-webpack-plugin": "^12.0.2",
     "eslint": "^8.57.0",
     "glob": "^11.0.0",
     "mocha": "^10.7.0",
@@ -48,6 +79,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "puppeteer": "^22.14.0",
     "xml2js": "^0.6.2"
   }
 }
