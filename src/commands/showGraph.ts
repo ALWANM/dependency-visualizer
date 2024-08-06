@@ -4,6 +4,7 @@ import {  Dependency} from "../providers/dependencyProvider";
 import * as fs from "fs";
 import * as path from "path";
 import * as puppeteer from "puppeteer";
+import { logDebugMessage } from "../utils/utils";
 
 
 export function showGraph(dependencies: Dependency[]) {
@@ -16,6 +17,13 @@ export function showGraph(dependencies: Dependency[]) {
     }
   );
 
+  // Log each dependency's data
+  dependencies.forEach((dependency) => {
+    logDebugMessage(`Dependency:
+      Label: ${dependency.label}
+      File Path: ${dependency.filePath}
+      Project References: ${dependency.projectReferences.join(", ")}`);
+  }); 
   panel.webview.html = getWebviewContent(dependencies);
 }
 
@@ -78,15 +86,15 @@ function getWebviewContent(dependencies: Dependency[]): string {
     
 
     const nodes = dependencies.map((dep) => ({
-      key: dep.label,
+      key: dep.filePath,
       text: `${dep.label}`,
-      filePath: dep.filePath, 
+      filePath: dep.filePath,
     }));
   
     const links = dependencies.flatMap((dep) =>
       dep.projectReferences.map((ref) => ({
-        from: dep.label,
-        to: extractProjectName(ref),
+        from: dep.filePath,
+        to: ref,//extractProjectName(ref),
         color: colorMap[extractProjectName(ref)],
       }))
     );
@@ -116,25 +124,19 @@ function getWebviewContent(dependencies: Dependency[]): string {
         function init() {
             var $ = go.GraphObject.make;
 
-            var myDiagram = $(go.Diagram, "myDiagramDiv", {
-            layout: $(go.LayeredDigraphLayout, {
-                    direction: 90, // Nodes will be arranged from top to bottom
-                    layerSpacing: 50, // Space between layers (vertical spacing)
-                    columnSpacing: 30 // Space between nodes in the same layer (horizontal spacing)
-                }),
-                "undoManager.isEnabled": true
-            });
-
+            var myDiagram =    $(go.Diagram, "myDiagramDiv",
+          {
+            layout: $(go.LayeredDigraphLayout, { direction: 0 }),
+            initialContentAlignment: go.Spot.Center,
+            "undoManager.isEnabled": true,
+            "toolManager.hoverDelay": 200,  // Tooltip delay
+            "animationManager.isEnabled": false // Disable animations for smoother zoom to fit
+          });
+            
+            // Node template
             myDiagram.nodeTemplate = $(go.Node, "Auto",
-                $(go.Shape, "RoundedRectangle", {
-                    strokeWidth: 1,
-                    stroke: "black",
-                    fill: "white"
-                }),
-                $(go.TextBlock, {
-                    margin: 8,
-                    editable: true
-                }, new go.Binding("text", "text").makeTwoWay()),
+                $(go.Shape, "RoundedRectangle", { strokeWidth: 1, stroke: "black", fill: "white" }, new go.Binding("fill", "color")),
+                $(go.TextBlock, { margin: 8, editable: true }, new go.Binding("text", "text").makeTwoWay()),
                 {
                     toolTip: $(go.Adornment, "Auto",
                         $(go.Shape, { fill: "#EFEFCC" }),
@@ -143,22 +145,24 @@ function getWebviewContent(dependencies: Dependency[]): string {
                     )
                 }
             );
-
-            myDiagram.linkTemplate = $(go.Link, {
-                routing: go.Link.AvoidsNodes,
-                corner: 5
-            },
+ 
+            // Link template
+            myDiagram.linkTemplate = $(go.Link,
+            { routing: go.Link.AvoidsNodes, corner: 5, curve: go.Link.JumpOver },
                 $(go.Shape, new go.Binding("stroke", "color")),
-                $(go.Shape, {
-                    toArrow: "Standard",
-                    fill: null
-                }, new go.Binding("stroke", "color"))
+                $(go.Shape, { toArrow: "Standard", fill: null }, new go.Binding("stroke", "color"))
             );
 
             myDiagram.model = new go.GraphLinksModel(
                 ${JSON.stringify(nodes)},
                 ${JSON.stringify(links)}
             );
+            
+            // Zoom to fit
+             myDiagram.zoomToFit();
+
+             // Adjusts the diagram bounds and layout
+             myDiagram.requestUpdate();
         }
 
         document.addEventListener('DOMContentLoaded', init);

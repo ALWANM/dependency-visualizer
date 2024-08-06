@@ -11,6 +11,12 @@ export interface PackageReference {
   };
 }
 
+export interface IDependency {
+  file: string;
+  projectReferences: string[];
+  packageReferences: string[];
+}
+
 export interface ItemGroup {
   ProjectReference?: ProjectReference[];
   PackageReference?: PackageReference[];
