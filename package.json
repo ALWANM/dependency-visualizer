@@ -3,7 +3,7 @@
   "displayName": "dv",
   "description": "it provide visualization of the dependency graph in dotnet project",
   "version": "1.0.0",
-  "publisher": "Marwan Alwan",
+  "publisher": "MarwanAlwan",
   "repository": {
     "type": "git",
     "url": "https://github.com/ALWANM/dependency-visualizer"
