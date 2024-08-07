@@ -11,7 +11,7 @@ export async function parseCsproj(filePath: string) {
 }
 
 export function logDebugMessage(message: string) {
-  console.log(`[DEBUG] ${message}`);
+  // console.log(`[DEBUG] ${message}`);
 }
 
 export async function findDependencies(rootPath: string) {

@@ -126,7 +126,7 @@ function getWebviewContent(dependencies: Dependency[]): string {
 
             var myDiagram =    $(go.Diagram, "myDiagramDiv",
           {
-            layout: $(go.LayeredDigraphLayout, { direction: 0 }),
+            layout: $(go.LayeredDigraphLayout, { direction: 180 }),
             initialContentAlignment: go.Spot.Center,
             "undoManager.isEnabled": true,
             "toolManager.hoverDelay": 200,  // Tooltip delay
@@ -168,62 +168,6 @@ function getWebviewContent(dependencies: Dependency[]): string {
         document.addEventListener('DOMContentLoaded', init);
     </script>
 </body>
-</html>`;
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-//   return `<!DOCTYPE html>
-// <html lang="en">
-// <head>
-//     <meta charset="UTF-8">
-//     <title>Dependency Graph</title>
-//     <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/2.1.52/go.js"></script>
-// </head>
-// <body>
-//     <div id="myDiagramDiv" style="width:100%; height:600px; background-color: #DAE4E4;"></div>
-//     <script>
-//         function init() {
-//             var $ = go.GraphObject.make;
-
-//             var myDiagram =
-//               $(go.Diagram, "myDiagramDiv",
-//                 {
-//                   "undoManager.isEnabled": true
-//                 });
-
-//             myDiagram.nodeTemplate =
-//               $(go.Node, "Auto",
-//                 $(go.Shape, "RoundedRectangle", { strokeWidth: 0, fill: "white" },
-//                   new go.Binding("fill", "color")),
-//                 $(go.TextBlock,
-//                   { margin: 8, editable: true },
-//                   new go.Binding("text", "text").makeTwoWay())
-//               );
-
-//             myDiagram.linkTemplate =
-//               $(go.Link,
-//                 { routing: go.Link.AvoidsNodes, corner: 5 },
-//                 $(go.Shape),
-//                 $(go.Shape, { toArrow: "Standard" })
-//               );
-
-//             myDiagram.model = new go.GraphLinksModel(
-//               ${JSON.stringify(nodes)},
-//               ${JSON.stringify(links)}
-//             );
-//         }
-
-//         document.addEventListener('DOMContentLoaded', init);
-//     </script>
-// </body>
-// </html>`;
+</html>`; 
 }
 

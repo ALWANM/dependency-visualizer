@@ -26,19 +26,19 @@
     "commands": [
       {
         "command": "dv.rd",
-        "title": "Refresh Dependencies tree view made by Marwan"
+        "title": "Refresh Dependencies tree view"
       },
       {
         "command": "dv.showGraph",
-        "title": "Show Dependencies Graph made by Marwan"
+        "title": "Show Dependencies Graph"
       },
       {
         "command": "dv.saveDependencyGraph",
-        "title": "Save dependencies graph into Html made by Marwan"
+        "title": "Save dependencies graph into Html"
       },
       {
         "command": "dv.printDependencyGraph",
-        "title": "Save Dependencies into pdf file made by Marwan"
+        "title": "Save Dependencies into pdf file"
       }
     ],
     "keybindings": [
