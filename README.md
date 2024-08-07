@@ -2,7 +2,7 @@
 
 Dependency Visualizer is a VS Code extension that helps you visualize the dependencies in your project. It provides a tree view of your project's dependencies, a graphical representation of the dependencies, and options to save the graph as HTML or PDF.
 
-<!-- ![Dependency Visualizer Logo](src\images/logo.png) -->
+![Dependency Visualizer Logo](src/images/logo.png)
 
 ## Features
 
