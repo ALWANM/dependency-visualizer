@@ -1,5 +1,5 @@
 {
-  "name": "DotnetDepVez",
+  "name": "DotnetDepVisualizer",
   "displayName": "dv",
   "description": "it provide visualization of the dependency graph in dotnet project",
   "version": "1.0.1",
