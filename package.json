@@ -1,8 +1,8 @@
 {
-  "name": "DotnetDepVisualizer",
+  "name": "AlwanDepVisualizer",
   "displayName": "dv",
   "description": "it provide visualization of the dependency graph in dotnet project",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "MarwanAlwan",
   "repository": {
     "type": "git",
