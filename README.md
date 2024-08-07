@@ -1,71 +1,76 @@
-# dependency-visualizer README
+# dependency-visualizer README 
 
-This is the README for your extension "dependency-visualizer". After writing up a brief description, we recommend including the following sections.
+Dependency Visualizer is a VS Code extension that helps you visualize the dependencies in your project. It provides a tree view of your project's dependencies, a graphical representation of the dependencies, and options to save the graph as HTML or PDF.
+
+![Dependency Visualizer Logo](src/images/logo.png)
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- **Refresh Dependencies Tree View:** Refreshes the tree view to reflect the current state of your project's dependencies.
+- **Show Dependencies Graph:** Displays a graphical representation of your project's dependencies.
+- **Save Dependencies Graph to HTML:** Saves the graphical representation of your dependencies as an HTML file.
+- **Save Dependencies Graph to PDF:** Saves the graphical representation of your dependencies as a PDF file.
 
-For example if there is an image subfolder under your extension project workspace:
+## Commands
 
-\!\[feature X\]\(images/feature-x.png\)
+The following commands are available in the Dependency Visualizer extension:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+1. **Refresh Dependencies Tree View**
+   - **Command:** `dv.rd`
+   - **Title:** Refresh Dependencies tree view
+   - **Description:** Refreshes the tree view to reflect the current state of your project's dependencies.
 
-## Requirements
+2. **Show Dependencies Graph**
+   - **Command:** `dv.showGraph`
+   - **Title:** Show Dependencies Graph
+   - **Description:** Displays a graphical representation of your project's dependencies.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+3. **Save Dependencies Graph to HTML**
+   - **Command:** `dv.saveDependencyGraph`
+   - **Title:** Save dependencies graph into HTML
+   - **Description:** Saves the graphical representation of your dependencies as an HTML file.
 
-## Extension Settings
+4. **Save Dependencies Graph to PDF**
+   - **Command:** `dv.printDependencyGraph`
+   - **Title:** Save Dependencies into PDF file
+   - **Description:** Saves the graphical representation of your dependencies as a PDF file.
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+## Usage
 
-For example:
+### Refresh Dependencies Tree View
 
-This extension contributes the following settings:
+To refresh the dependencies tree view, open the Command Palette (Ctrl+Shift+P) and type `Refresh Dependencies tree view`, then press Enter. This will refresh the tree view to reflect the current state of your project's dependencies.
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+### Show Dependencies Graph
 
-## Known Issues
+To show the dependencies graph, open the Command Palette (Ctrl+Shift+P) and type `Show Dependencies Graph`, then press Enter. This will open a new panel displaying a graphical representation of your project's dependencies.
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+### Save Dependencies Graph to HTML
 
-## Release Notes
+To save the dependencies graph as an HTML file, open the Command Palette (Ctrl+Shift+P) and type `Save dependencies graph into HTML`, then press Enter. You will be prompted to select a directory where the HTML file will be saved.
 
-Users appreciate release notes as you update your extension.
+### Save Dependencies Graph to PDF
 
-### 1.0.0
+To save the dependencies graph as a PDF file, open the Command Palette (Ctrl+Shift+P) and type `Save Dependencies into PDF file`, then press Enter. You will be prompted to select a directory where the PDF file will be saved.
 
-Initial release of ...
+![Usage Example](images/usage-example.png)
 
-### 1.0.1
+### GIF Demo
 
-Fixed issue #.
+![Dependency Visualizer Demo](src/images/demo.gif)
 
-### 1.1.0
+## Installation
 
-Added features X, Y, and Z.
+1. Open VS Code.
+2. Go to the Extensions view by clicking on the Extensions icon in the Activity Bar on the side of the window or by pressing `Ctrl+Shift+X`.
+3. Search for "Dependency Visualizer".
+4. Click Install to install the extension.
+5. Once installed, you can start using the commands listed above.
 
----
+## Contributing
 
-## Following extension guidelines
+If you find any issues or have suggestions for new features, please create an issue or a pull request in the [GitHub repository](https://github.com/ALWANM/dependency-visualizer.git).
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+## License
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension is licensed under the [MIT License](LICENSE).

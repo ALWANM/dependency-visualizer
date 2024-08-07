@@ -2,7 +2,12 @@
   "name": "dv",
   "displayName": "dv",
   "description": "it provide visualization of the dependency graph in dotnet project",
-  "version": "1.0.0",
+  "version": "1.0.2",
+  "publisher": "MarwanAlwan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ALWANM/dependency-visualizer"
+  },
   "engines": {
     "vscode": "^1.91.0"
   },
@@ -26,19 +31,19 @@
     "commands": [
       {
         "command": "dv.rd",
-        "title": "Refresh Dependencies tree view made by Marwan"
+        "title": "Refresh Dependencies tree view"
       },
       {
         "command": "dv.showGraph",
-        "title": "Show Dependencies Graph made by Marwan"
+        "title": "Show Dependencies Graph"
       },
       {
         "command": "dv.saveDependencyGraph",
-        "title": "Save dependencies graph into Html made by Marwan"
+        "title": "Save dependencies graph into Html"
       },
       {
         "command": "dv.printDependencyGraph",
-        "title": "Save Dependencies into pdf file made by Marwan"
+        "title": "Save Dependencies into pdf file"
       }
     ],
     "keybindings": [
